@@ -18,7 +18,7 @@ while($row = mysql_fetch_assoc($query))
  <tr>
      <td><?php echo $row['description']; ?></td>
      <td><?php echo $row['price']; ?></td>
-     <td><a href="index.php?page=products&id=<?php echo $row['id']; ?>">Add to cart</a></td>
+     <td><a href="index.php?page=products&action=add&id=<?php echo $row['id']; ?>">Add to cart</a></td>
  </tr>   
 <?php
 }
