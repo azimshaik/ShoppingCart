@@ -1,15 +1,16 @@
-<h2><?php if(isset($message)){echo $message;}</h2>
+<h2><?php if(isset($message)){echo $message;}?>
+</h2>
 <?php 
-    if(isset($_GET['action'])&& $_GET['action'] == "add"){
+    if(isset($_GET['action']) && $_GET['action'] == "add"){
     $id = intval($_GET['id']);
-        if(isset($_SESSIO['cart'][$id])){
+        if(isset($_SESSION['cart'][$id])){
         $_SESSION['cart'][$id][quantity]++;
              }else{
             $sql = "SELECT * FROM product WHERE id={$id}";
             $query2 = mysql_query($sql);
             if(mysql_num_rows($query2)!=0){
                 $row2 = mysql_fetch_array($query2);
-                $_SESSION['cart'][$row2['id']] = array("quantity" =>1,"price"=>$row2['price']);
+                $_SESSION['cart'][$row2['id']] = array("quantity" =>1,"price" =>$row2['price']);
             }else{
                 $message = "This product id is valid";
             }
