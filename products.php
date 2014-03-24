@@ -20,10 +20,11 @@
 <h1>Products</h1>
         <table>
             <tr>
-                <th>NAme</th>
+                <th>Name</th>
                 <th>Description</th>
                 <th>Price</th>
                 <th>Action</th>
+                <th>Add</th>
             </tr>
             <?php
             require('databaselink.php');
@@ -35,14 +36,18 @@ while($row = mysql_fetch_assoc($query))
 {
     ?>
  <tr>
+     
+     <td><?php echo $row['id']; ?></td>
      <td><?php echo $row['description']; ?></td>
      <td><?php echo $row['price']; ?></td>
+     <td><input type="checkbox" name="items[]" value="<?php echo $row['id']; ?>"></td>
      <td><a href="index.php?page=products&action=add&id=<?php echo $row['id']; ?>">Add to cart</a></td>
  </tr>   
 <?php
 }
 ?>
 
+<a href="index.php?page=products&action=add&id=<?php echo $row['id']; ?>">Add to cart</a>
                 
             
         </table>
