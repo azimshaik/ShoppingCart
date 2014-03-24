@@ -1,9 +1,10 @@
+ 
 <?php 
 session_start();
      require_once('databaselink.php');
       if(isset($_POST['ChangePassword']))
       {
-	  $uid=$_POST['uid'];
+	  $uid=$_POST['id'];
       $passwordvalue=$_POST['oldpassword'];
       $password=$_POST['newpassword'];
       $confirm_pwd=$_POST['newpassword2'];   
@@ -13,7 +14,7 @@ session_start();
 
       if($password==$confirm_pwd && $data_pwd==$passwordvalue)
         {
-      $insert=mysql_query("update customer set password='$password' where uid='$uid'"); 
+      $insert=mysql_query("update customer set password='$password' where id='$uid'"); 
        echo "Successful";
         }
       else
