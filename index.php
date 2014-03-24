@@ -18,9 +18,30 @@
         <h1>hello</h1>
         <div>
      <?php require($page . ".php"); ?> 
-        </div><h1>Cart</h1>
+        </div>
+        <h1>Cart</h1>
         <div>
 <?php
+
+$cart = array();
+$cart= $_SESSION['cart'];
+    $sql = "SELCT *FROM 'product' WHERE id IN (";$sql .= implode(",", $_SESSION['cart']) . ")";
+echo $cart;
+echo $sql;
+?>
+
+
+        </div>
+        <a href="logout.php">logout</a>
+    </body>
+</html>
+
+<!-- 
+
+< ?php/*
+
+cart
+< ?php
     if(isset($_SESSION['cart'])){
     
     $sql ="SELECT * FROM product WHERE id IN ("; 
@@ -31,22 +52,14 @@
     $query = mysql_query($sql);
     while($row = mysql_fetch_array($query)){
 ?>
-    <p><?php echo $row['name']; ?><?php echo $_SESSION['cart'][$row['id']]['quantity']; ?></p>
+    <p>< ?php echo $row['name']; ?>< ?php echo $_SESSION['cart'][$row['id']]['quantity']; ?></p>
     <a href="index.php?page=cart">Go to cart</a>
-<?php
+< ?php
              }
                                        }else{
     echo "<p>Your cart is empty.<br/> Please add some products</p>";
 }
 ?>
-        </div>
-        <a href="logout.php">logout</a>
-    </body>
-</html>
-
-<!-- 
-
-< ?php/*
   session_start();
     require_once("databaselink.php");
     if(isset($_GET['page'])){
@@ -76,4 +89,5 @@
         echo $id;
         require('products.php');
         ?>
+
 -->
